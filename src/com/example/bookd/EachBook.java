@@ -6,11 +6,17 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.view.Menu;
 import android.view.TextureView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EachBook extends Activity {
 	databaseHelper db ;
 	TextView bname,bauthor,bdescription;
+	Button review ;
+	EditText et_review;
 	
 
 	@Override
@@ -22,16 +28,40 @@ public class EachBook extends Activity {
 		 bname = (TextView)findViewById(R.id.bookname);
 		 bauthor = (TextView)findViewById(R.id.author);
 		 bdescription = (TextView)findViewById(R.id.description);
+		 review = (Button)findViewById(R.id.addreview);
+		 et_review = (EditText)findViewById(R.id.et_review);
 		 
 		 
 		
 		Intent intent = getIntent();
 		int pos = intent.getIntExtra("position", 0);
+		int uid = intent.getIntExtra("userid", -1);
 		Cursor c = db.getBookDetails(pos); 
 		c.moveToFirst();
 		bname.setText(c.getString(1));
 		bauthor.setText(c.getString(2));
 		bdescription.setText(c.getString(3));
+		
+		//listener for add review
+		review.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = getIntent();
+				int pos = intent.getIntExtra("position", 0);
+				int uid = intent.getIntExtra("userid", -1);
+				String review =et_review.getText().toString();
+				if(db.saveReview(uid,pos,review) >0)
+					{
+					   Toast.makeText(getApplicationContext(), "Review Saved!", Toast.LENGTH_LONG).show();
+					}
+				
+				
+			}
+		});
+		
+		
 		
 	}
 

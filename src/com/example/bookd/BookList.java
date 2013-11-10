@@ -24,6 +24,8 @@ public class BookList extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_book_list);
+		Intent in = getIntent();
+		final int uid =in.getIntExtra("userid", -1);
 		
 		gridView = (GridView) findViewById(R.id.booklist);
 		 
@@ -34,6 +36,7 @@ public class BookList extends Activity {
 		        	Toast.makeText(getApplicationContext(), "position is,"+position, Toast.LENGTH_LONG).show();
 		        	Intent intent = new Intent(BookList.this,EachBook.class);
 		        	intent.putExtra("position", position+1);
+		        	intent.putExtra("userid", uid);
 		        	startActivity(intent);
 		            
 		        }

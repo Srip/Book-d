@@ -8,15 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".EachBook" >
 
-    <Button
-        android:id="@+id/addreview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="42dp"
-        android:layout_toLeftOf="@+id/textView2"
-        android:text="@string/Add_Review" />
-
     <TextView
         android:id="@+id/bookname"
         android:layout_width="wrap_content"
@@ -47,5 +38,26 @@
         android:layout_marginBottom="36dp"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/addreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="60dp"
+        android:text="@string/Add_Review" />
+
+    <EditText
+        android:id="@+id/et_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/addreview"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:hint="@string/Add_Review" >
+
+        <requestFocus />
+    </EditText>
   
 </RelativeLayout>

@@ -92,16 +92,16 @@ public class databaseHelper extends SQLiteOpenHelper {
 			return false;
 	}
 	
-	public boolean loginAuthenticated(String u,String p)
+	public int loginAuthenticated(String u,String p) 
 	{
 		SQLiteDatabase db = this.getReadableDatabase();
 		String query = "SELECT * FROM "+TABLE_LOGIN + " WHERE "+USERNAME+ " =? AND "+PASSWORD+" =? ;";
 		Cursor c = db.rawQuery(query, new String[]{u,p});
 		c.moveToFirst();
 		if(c.getCount()!= 0)
-		 return true;
+		 return c.getInt(0);
 		else
-			return false;
+			return -1;
 	}
 	
 	public Cursor getBookDetails(int pos)
@@ -115,5 +115,17 @@ public class databaseHelper extends SQLiteOpenHelper {
 		
 	}
 	
+	public int saveReview(int uid,int pos_book,String review)
+	{
+		SQLiteDatabase db = this.getWritableDatabase();
+		String query = "insert into "+TABLE_REVIEW+ "(" +USER_ID_FOR+" , "+BOOK_ID_FOR+" , "+REVIEWS
+				+" ) values ("+uid+" , "+pos_book+" , \""+review+"\");";
+		ContentValues values = new ContentValues();
+		values.put("user_id",uid);
+		values.put("book_id", pos_book);
+		values.put("reviews",review);
+		long row_id = db.insert(TABLE_REVIEW, null, values);
+		return (int)row_id;
+	}
 
 }

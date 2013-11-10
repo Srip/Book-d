@@ -50,13 +50,13 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				 String user = username.getText().toString();
 			     String pass = password.getText().toString();
-			     
-			     if(db.loginAuthenticated(user,pass))
+			     int uid;
+			     if((uid = db.loginAuthenticated(user,pass)) >0)
 			     {
 			    	 Toast.makeText(getApplicationContext(), "Successful login!!", Toast.LENGTH_LONG).show();
 			    	 //move to a new intent
 			    	 Intent intent = new Intent(MainActivity.this,BookList.class);
-			    	 
+			    	 intent.putExtra("userid", uid);
 			    	 startActivity(intent);
 			    	 
 			     }
