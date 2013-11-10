@@ -1,5 +1,8 @@
 package com.example.bookd;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -127,5 +130,33 @@ public class databaseHelper extends SQLiteOpenHelper {
 		long row_id = db.insert(TABLE_REVIEW, null, values);
 		return (int)row_id;
 	}
+	
+	public String[] getBookReview(int uid)
+	{
+		int i =0;
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		String query = "SELECT * from "+TABLE_REVIEW+" where "+USER_ID_FOR+" = "+uid+" ;";
+		Cursor c = db.rawQuery(query, null);
+		
+		ArrayList<String> review =new ArrayList<String>();
+		c.moveToFirst();
+		
+		do
+		{
+			
+			String q = "SELECT * FROM "+TABLE_BOOKS+" WHERE "+BOOK_ID+" = "+c.getInt(2)+";";
+			Cursor bn = db.rawQuery(q, null);
+			bn.moveToFirst();
+		  review.add(bn.getString(1)+"::\n"+c.getString(3));
+		 
+		}while(c.moveToNext());
+		
+		String[] review_array = new String[review.size()];
+		review.toArray(review_array);
+		return review_array;
+	}
+	
+
 
 }

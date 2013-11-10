@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -55,7 +56,8 @@ public class MainActivity extends Activity {
 			     {
 			    	 Toast.makeText(getApplicationContext(), "Successful login!!", Toast.LENGTH_LONG).show();
 			    	 //move to a new intent
-			    	 Intent intent = new Intent(MainActivity.this,BookList.class);
+			    	 Intent intent = new Intent(MainActivity.this,Tab_try.class);
+			    	
 			    	 intent.putExtra("userid", uid);
 			    	 startActivity(intent);
 			    	 
