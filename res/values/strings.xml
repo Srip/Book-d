@@ -12,6 +12,7 @@
     <string name="title_activity_book_list">BookList</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_each_book">EachBook</string>
+    <string name="Add_Review">Add Review</string>
 
 
 </resources>

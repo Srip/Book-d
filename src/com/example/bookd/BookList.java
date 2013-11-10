@@ -2,9 +2,14 @@ package com.example.bookd;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.Toast;
+import android.view.TextureView;
+import android.view.View;
 
 public class BookList extends Activity {
 	
@@ -23,6 +28,16 @@ public class BookList extends Activity {
 		gridView = (GridView) findViewById(R.id.booklist);
 		 
 		gridView.setAdapter(new Grid_image_adapter(this, BOOKS_NAMES));
+		
+		 gridView.setOnItemClickListener(new OnItemClickListener() {
+		        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		        	Toast.makeText(getApplicationContext(), "position is,"+position, Toast.LENGTH_LONG).show();
+		        	Intent intent = new Intent(BookList.this,EachBook.class);
+		        	intent.putExtra("position", position+1);
+		        	startActivity(intent);
+		            
+		        }
+		    });
 		
 		
 	}

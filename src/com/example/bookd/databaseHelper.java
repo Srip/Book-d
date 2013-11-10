@@ -55,14 +55,15 @@ public class databaseHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_LOGIN_TABLE);
 		
 		String CREATE_BOOKS_TABLE = "CREATE TABLE " + TABLE_BOOKS + "("
-				+ BOOK_ID + " INTEGER PRIMARY KEY autoincrement ," + BOOK_NAME + " TEXT,"
-				+ BOOK_AUTHOR + " TEXT" + BOOK_DESCR + " TEXT )";
+				+ BOOK_ID + " INTEGER PRIMARY KEY  ," + BOOK_NAME + " TEXT,"
+				+ BOOK_AUTHOR + " TEXT, " + BOOK_DESCR + " TEXT )";
 		db.execSQL(CREATE_BOOKS_TABLE);
 		
-		String CREATE_REVIEW_TABLE = "CREATE TABLE "+TABLE_REVIEW+ " ("
-				+REVIEW_ID+" INTEGER PRIMARY KEY autoincrememt , FOREIGN KEY ("+USER_ID_FOR+") REFERENCES "
-				+TABLE_LOGIN+"("+LOGIN_ID+") , FOREIGN KEY("+BOOK_ID_FOR+") REFERENCES "+TABLE_BOOKS
-				+"("+BOOK_ID+") , "+REVIEWS+" TEXT );";
+		String CREATE_REVIEW_TABLE ="CREATE TABLE "+TABLE_REVIEW + "("+REVIEW_ID+" INTEGER PRIMARY KEY autoincrement,"+USER_ID_FOR
+				+" INTEGER, "+BOOK_ID_FOR+" INTEGER, "+REVIEWS+" TEXT, FOREIGN KEY ("+USER_ID_FOR
+				+") REFERENCES "+TABLE_LOGIN+"("+LOGIN_ID+"), FOREIGN KEY ("+BOOK_ID_FOR
+				+") REFERENCES "+TABLE_BOOKS+"("+BOOK_ID+") );";		
+				db.execSQL(CREATE_REVIEW_TABLE);
 		Log.v("database","created");
 	}
 
@@ -101,6 +102,17 @@ public class databaseHelper extends SQLiteOpenHelper {
 		 return true;
 		else
 			return false;
+	}
+	
+	public Cursor getBookDetails(int pos)
+	{
+		
+		SQLiteDatabase db = this.getReadableDatabase();
+		String query = "SELECT * FROM "+TABLE_BOOKS+" WHERE "+BOOK_ID+ "= "+pos+" ;";
+		Cursor c = db.rawQuery(query, null);
+		
+		return c;
+		
 	}
 	
 

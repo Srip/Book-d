@@ -8,5 +8,44 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".EachBook" >
 
+    <Button
+        android:id="@+id/addreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="42dp"
+        android:layout_toLeftOf="@+id/textView2"
+        android:text="@string/Add_Review" />
+
+    <TextView
+        android:id="@+id/bookname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="14dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bookname"
+        android:layout_below="@+id/bookname"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="35dp"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/addreview"
+        android:layout_alignRight="@+id/description"
+        android:layout_marginBottom="36dp"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
   
 </RelativeLayout>

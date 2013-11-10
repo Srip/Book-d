@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,7 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         db = new databaseHelper(getApplicationContext());
-        SQLiteDatabase database = db.getWritableDatabase();
+        
         
         //get the parameters 
         username = (EditText)findViewById(R.id.et_username);
@@ -57,6 +56,7 @@ public class MainActivity extends Activity {
 			    	 Toast.makeText(getApplicationContext(), "Successful login!!", Toast.LENGTH_LONG).show();
 			    	 //move to a new intent
 			    	 Intent intent = new Intent(MainActivity.this,BookList.class);
+			    	 
 			    	 startActivity(intent);
 			    	 
 			     }
