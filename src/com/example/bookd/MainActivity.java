@@ -2,6 +2,7 @@ package com.example.bookd;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.view.Menu;
 import android.view.TextureView;
@@ -55,6 +56,9 @@ public class MainActivity extends Activity {
 			     {
 			    	 Toast.makeText(getApplicationContext(), "Successful login!!", Toast.LENGTH_LONG).show();
 			    	 //move to a new intent
+			    	 Intent intent = new Intent(MainActivity.this,BookList.class);
+			    	 startActivity(intent);
+			    	 
 			     }
 			     else
 			     {

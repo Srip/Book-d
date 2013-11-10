@@ -18,11 +18,25 @@ public class databaseHelper extends SQLiteOpenHelper {
 
 		// Contacts table name
 		private static final String TABLE_LOGIN = "login";
+		private static final String TABLE_BOOKS = "booklist";
+		private static final String TABLE_REVIEW = "reviews";
 
 		// Contacts Table Columns names
 		private static final String LOGIN_ID = "id";
 		private static final String USERNAME = "username";
 		private static final String PASSWORD = "password";
+		
+		private static final String BOOK_ID = "book_id";
+		private static final String BOOK_NAME = "bookname";
+		private static final String BOOK_AUTHOR = "bookauthor";
+		private static final String BOOK_DESCR = "bookdescription";
+		
+		private static final String REVIEW_ID ="review_id";
+		private static final String USER_ID_FOR = "user_id";
+		private static final String BOOK_ID_FOR = "book_id";
+		private static final String REVIEWS = "reviews";
+		
+		
 
 	public databaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -39,6 +53,16 @@ public class databaseHelper extends SQLiteOpenHelper {
 				+ LOGIN_ID + " INTEGER PRIMARY KEY autoincrement ," + USERNAME + " TEXT,"
 				+ PASSWORD + " TEXT" + ")";
 		db.execSQL(CREATE_LOGIN_TABLE);
+		
+		String CREATE_BOOKS_TABLE = "CREATE TABLE " + TABLE_BOOKS + "("
+				+ BOOK_ID + " INTEGER PRIMARY KEY autoincrement ," + BOOK_NAME + " TEXT,"
+				+ BOOK_AUTHOR + " TEXT" + BOOK_DESCR + " TEXT )";
+		db.execSQL(CREATE_BOOKS_TABLE);
+		
+		String CREATE_REVIEW_TABLE = "CREATE TABLE "+TABLE_REVIEW+ " ("
+				+REVIEW_ID+" INTEGER PRIMARY KEY autoincrememt , FOREIGN KEY ("+USER_ID_FOR+") REFERENCES "
+				+TABLE_LOGIN+"("+LOGIN_ID+") , FOREIGN KEY("+BOOK_ID_FOR+") REFERENCES "+TABLE_BOOKS
+				+"("+BOOK_ID+") , "+REVIEWS+" TEXT );";
 		Log.v("database","created");
 	}
 
@@ -47,6 +71,8 @@ public class databaseHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		// Drop older table if existed
 				db.execSQL("DROP TABLE IF EXISTS " + TABLE_LOGIN);
+				db.execSQL("DROP TABLE IF EXISTS " + TABLE_BOOKS);
+				db.execSQL("DROP TABLE IF EXISTS " + TABLE_REVIEW);
 
 				// Create tables again
 				onCreate(db);
