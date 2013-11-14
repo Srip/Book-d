@@ -57,6 +57,30 @@ public class Grid_image_adapter extends BaseAdapter {
 			} else if (mobile.equals("kiterunner")) {
 				imageView.setImageResource(R.drawable.eight);
 			}
+			else if (mobile.equals("hpgoblet")) {
+				imageView.setImageResource(R.drawable.nine);
+			}
+			else if (mobile.equals("sh")) {
+				imageView.setImageResource(R.drawable.ten);
+			}
+			else if (mobile.equals("dummy")) {
+				imageView.setImageResource(R.drawable.eleven);
+			}
+			else if (mobile.equals("hobbit")) {
+				imageView.setImageResource(R.drawable.twelve);
+			}
+			else if (mobile.equals("angels")) {
+				imageView.setImageResource(R.drawable.thirteen);
+			}
+			else if (mobile.equals("geisha")) {
+				imageView.setImageResource(R.drawable.fourteen);
+			}
+			else if (mobile.equals("huckle")) {
+				imageView.setImageResource(R.drawable.fifteen);
+			}
+			else if (mobile.equals("heights")) {
+				imageView.setImageResource(R.drawable.sixteen);
+			}
 			else {
 				imageView.setImageResource(R.drawable.ic_launcher);
 			}

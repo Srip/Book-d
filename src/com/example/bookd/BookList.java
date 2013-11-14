@@ -1,5 +1,6 @@
 package com.example.bookd;
 
+import android.media.AudioRecord.OnRecordPositionUpdateListener;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,7 +18,7 @@ public class BookList extends Activity {
 	 
 	static final String[] BOOKS_NAMES = new String[] { 
 		"harrypotterandthesocererstone", "thealchemist","davincicode", "prideandprejudice","howtokillamockingbird"
-		,"lifeofpi" ,"waterforelephants","kiterunner"};
+		,"lifeofpi" ,"waterforelephants","kiterunner","hpgoblet","sh","dummy","hobbit","angels","geisha","huckle","heights"};
  
 
 	@Override
@@ -51,7 +52,7 @@ public class BookList extends Activity {
 		getMenuInflater().inflate(R.menu.book_list, menu);
 		return true;
 	}
-
+	
 }
 
 

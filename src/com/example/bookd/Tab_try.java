@@ -48,6 +48,7 @@ public class Tab_try extends TabActivity
                     /** Add the tabs  to the TabHost to display. */
                     tabHost.addTab(tab1);
                     tabHost.addTab(tab2);
+                    
                    
 
             }
