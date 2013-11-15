@@ -81,6 +81,14 @@ public class MainActivity extends Activity {
         
     }
 
+    
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub
+        super.onStart();
+        System.out.println("----main activity---onStart---");
+    overridePendingTransition(R.anim.anim_in, R.anim.anim_out);     
+  }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

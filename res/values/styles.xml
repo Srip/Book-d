@@ -16,5 +16,12 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    <color name="highlight_blue">#00FFFF</color>
+    <color name="strawberry">#FFEFD5</color>
+    <color name="welcome_screen">#FFF8DC</color>
+    <color name="review_add">#802A2A</color>
+    <color name="grey">#383838</color>
+    <color name="author">#B13E0F</color>
+    
 
 </resources>
