@@ -34,7 +34,7 @@ public class BookList extends Activity {
 		
 		 gridView.setOnItemClickListener(new OnItemClickListener() {
 		        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		        	Toast.makeText(getApplicationContext(), "position is,"+position, Toast.LENGTH_LONG).show();
+		        	//Toast.makeText(getApplicationContext(), "position is,"+position, Toast.LENGTH_LONG).show();
 		        	Intent intent = new Intent(BookList.this,EachBook.class);
 		        	intent.putExtra("position", position+1);
 		        	intent.putExtra("userid", uid);

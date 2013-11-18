@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 			        {
 			        	if(db.insertToLogin(user,pass))
 			        	{
-			        	Toast.makeText(getApplicationContext(), "Successful signup!!", Toast.LENGTH_LONG).show();
+			        	Toast.makeText(getApplicationContext(), "Successful signup!!", Toast.LENGTH_SHORT).show();
 			        	}
 			        }
 			        else
@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
 			     int uid;
 			     if((uid = db.loginAuthenticated(user,pass)) >0)
 			     {
-			    	 Toast.makeText(getApplicationContext(), "Successful login!!", Toast.LENGTH_LONG).show();
+			    	 Toast.makeText(getApplicationContext(), "Successful login!!", Toast.LENGTH_SHORT).show();
 			    	 //move to a new intent
 			    	 Intent intent = new Intent(MainActivity.this,Tab_try.class);
 			    	
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
 			     }
 			     else
 			     {
-			    	 Toast.makeText(getApplicationContext(), "Please check credentials", Toast.LENGTH_LONG).show();
+			    	 Toast.makeText(getApplicationContext(), "Please check credentials", Toast.LENGTH_SHORT).show();
 			     }
 				
 				

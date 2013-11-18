@@ -1,5 +1,8 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wooden"
@@ -10,23 +13,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:textAlignment="center"
     tools:context=".EachBook" >
-
-    <Button
-        android:id="@+id/addreview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/rev_but"
-        android:paddingBottom="@dimen/medium"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/medium"
-        android:text="@string/Add_Review"
-        android:textColor="@color/welcome_screen">
-	
-	</Button>
     <TextView
         android:id="@+id/bookname"
         android:layout_width="wrap_content"
@@ -39,21 +25,6 @@
         
         </TextView>
 
-    <EditText
-        android:id="@+id/et_review"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/addreview"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
-        android:ems="10"
-        android:hint="@string/Add_Review"
-        android:shadowColor="@color/highlight"
-        android:textAlignment="center"
-        android:textColorHint="@android:color/black" >
-	<requestFocus />
-    </EditText>
-
     <TextView
         android:id="@+id/author"
         android:layout_width="wrap_content"
@@ -62,18 +33,53 @@
         android:layout_below="@+id/bookname"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/author" />
+        android:textColor="@color/author"
+        android:isScrollContainer="true" />
 
         <TextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/bookname"
-            android:layout_below="@+id/author"
-            android:layout_marginTop="21dp"
-            android:isScrollContainer="true"
+            android:layout_below="@+id/addreview"
+            android:layout_marginTop="58dp"
             android:scrollbars="vertical"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
+        <Button
+            android:id="@+id/addreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/description"
+            android:layout_below="@+id/et_review"
+            android:layout_marginLeft="66dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rev_but"
+            android:paddingBottom="@dimen/medium"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/medium"
+            android:text="@string/Add_Review"
+            android:textColor="@color/welcome_screen" />
+
+        <EditText
+            android:id="@+id/et_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/author"
+            android:layout_marginTop="22dp"
+            android:ems="10"
+            android:hint="@string/Add_Review"
+            android:shadowColor="@color/highlight"
+            android:textAlignment="center"
+            android:textColorHint="@android:color/black" >
+
+            <requestFocus />
+        </EditText>
+
 </RelativeLayout>
+
+    
+</ScrollView>

@@ -18,6 +18,7 @@ public class EachBook extends Activity {
 	Button review ;
 	EditText et_review;
 	
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class EachBook extends Activity {
 		 bdescription = (TextView)findViewById(R.id.description);
 		 review = (Button)findViewById(R.id.addreview);
 		 et_review = (EditText)findViewById(R.id.et_review);
-		 
+		
 		 
 		
 		Intent intent = getIntent();
@@ -48,13 +49,19 @@ public class EachBook extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				
 				Intent intent = getIntent();
 				int pos = intent.getIntExtra("position", 0);
 				int uid = intent.getIntExtra("userid", -1);
 				String review =et_review.getText().toString();
-				if(db.saveReview(uid,pos,review) >0)
+				if(db.saveReview(uid,pos,review) >0 )
 					{
-					   Toast.makeText(getApplicationContext(), "Review Saved!", Toast.LENGTH_LONG).show();
+					 
+					
+					   Toast.makeText(getApplicationContext(), "Review Saved!", Toast.LENGTH_SHORT).show();
+					   Intent intent1 = new Intent(EachBook.this,My_reviews.class);
+					   intent1.putExtra("userid",uid);
+					   startActivity(intent1);
 					}
 				
 				

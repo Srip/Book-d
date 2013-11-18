@@ -10,6 +10,7 @@
 
     <application
         android:allowBackup="true"
+        android:logo="@drawable/ic_launcher"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" android:debuggable="true">
@@ -24,19 +25,19 @@
         </activity>
         <activity
             android:name="com.example.bookd.BookList"
-            android:label="@string/title_activity_book_list" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.bookd.EachBook"
-            android:label="@string/title_activity_each_book" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.bookd.Tab_try"
-            android:label="@string/title_activity_each_book" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.bookd.My_reviews"
-            android:label="@string/title_activity_my_reviews" >
+            android:label="@string/app_name" >
         </activity>
     </application>
 
