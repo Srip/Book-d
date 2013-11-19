@@ -67,39 +67,44 @@ public final class R {
         public static final int wooden=0x7f02001a;
     }
     public static final class id {
-        public static final int LinearLayout01=0x7f0a000f;
-        public static final int action_settings=0x7f0a0010;
+        public static final int LinearLayout01=0x7f0a0011;
+        public static final int action_settings=0x7f0a0012;
         public static final int addreview=0x7f0a0005;
+        public static final int allreview=0x7f0a0010;
         public static final int author=0x7f0a0002;
         public static final int booklist=0x7f0a0000;
         public static final int bookname=0x7f0a0001;
         public static final int description=0x7f0a0004;
-        public static final int et_password=0x7f0a0008;
+        public static final int et_password=0x7f0a0009;
         public static final int et_review=0x7f0a0003;
-        public static final int et_username=0x7f0a0006;
+        public static final int et_username=0x7f0a0007;
         public static final int grid_item_image=0x7f0a000d;
-        public static final int list=0x7f0a000c;
-        public static final int login=0x7f0a000b;
-        public static final int menu_settings=0x7f0a0011;
-        public static final int password=0x7f0a0007;
-        public static final int review=0x7f0a000e;
-        public static final int signup=0x7f0a0009;
-        public static final int textView1=0x7f0a000a;
+        public static final int login=0x7f0a000c;
+        public static final int menu_settings=0x7f0a0013;
+        public static final int myreview=0x7f0a000e;
+        public static final int password=0x7f0a0008;
+        public static final int rating=0x7f0a0006;
+        public static final int review=0x7f0a000f;
+        public static final int signup=0x7f0a000a;
+        public static final int textView1=0x7f0a000b;
     }
     public static final class layout {
-        public static final int activity_book_list=0x7f030000;
-        public static final int activity_each_book=0x7f030001;
-        public static final int activity_main=0x7f030002;
-        public static final int activity_my_reviews=0x7f030003;
-        public static final int grid_book=0x7f030004;
-        public static final int review_each=0x7f030005;
-        public static final int trytabs=0x7f030006;
+        public static final int activity_all_reviews=0x7f030000;
+        public static final int activity_book_list=0x7f030001;
+        public static final int activity_each_book=0x7f030002;
+        public static final int activity_main=0x7f030003;
+        public static final int activity_my_reviews=0x7f030004;
+        public static final int grid_book=0x7f030005;
+        public static final int review_each=0x7f030006;
+        public static final int review_each_all=0x7f030007;
+        public static final int trytabs=0x7f030008;
     }
     public static final class menu {
-        public static final int book_list=0x7f090000;
-        public static final int each_book=0x7f090001;
-        public static final int main=0x7f090002;
-        public static final int my_reviews=0x7f090003;
+        public static final int all_reviews=0x7f090000;
+        public static final int book_list=0x7f090001;
+        public static final int each_book=0x7f090002;
+        public static final int main=0x7f090003;
+        public static final int my_reviews=0x7f090004;
     }
     public static final class string {
         public static final int Add_Review=0x7f07000b;
@@ -111,6 +116,7 @@ public final class R {
         public static final int new_user=0x7f07000d;
         public static final int password=0x7f070004;
         public static final int signup=0x7f070007;
+        public static final int title_activity_all_reviews=0x7f07000e;
         public static final int title_activity_book_list=0x7f070008;
         public static final int title_activity_each_book=0x7f07000a;
         public static final int title_activity_my_reviews=0x7f07000c;

@@ -15,5 +15,6 @@
     <string name="Add_Review">Add Review</string>
     <string name="title_activity_my_reviews">My_reviews</string>
     <string name="new_user">New User?</string>
+    <string name="title_activity_all_reviews">All_reviews</string>
 
 </resources>

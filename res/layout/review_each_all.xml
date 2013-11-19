@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/allreview" 
+    >
+
+    <TextView
+        android:id="@+id/bookname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Large Text"
+        android:textColor="@color/welcome_screen"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/bookname"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="35dp"
+        android:text="review"
+        android:textColor="@color/welcome_screen"
+        android:textSize="20sp" />
+
+    <RatingBar
+        android:id="@+id/rating"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/review"
+        android:layout_marginTop="16dp" />
+
+</RelativeLayout> 

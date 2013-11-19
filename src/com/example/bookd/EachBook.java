@@ -9,6 +9,7 @@ import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,8 @@ public class EachBook extends Activity {
 	TextView bname,bauthor,bdescription;
 	Button review ;
 	EditText et_review;
+	RatingBar rating;
+	boolean review_given;
 	
 	
 
@@ -31,6 +34,7 @@ public class EachBook extends Activity {
 		 bdescription = (TextView)findViewById(R.id.description);
 		 review = (Button)findViewById(R.id.addreview);
 		 et_review = (EditText)findViewById(R.id.et_review);
+		 rating = (RatingBar)findViewById(R.id.rating);
 		
 		 
 		
@@ -42,6 +46,7 @@ public class EachBook extends Activity {
 		bname.setText(c.getString(1));
 		bauthor.setText(c.getString(2));
 		bdescription.setText(c.getString(3));
+		review_given = true;
 		
 		//listener for add review
 		review.setOnClickListener(new View.OnClickListener() {
@@ -49,21 +54,23 @@ public class EachBook extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				//review_given = true;
 				Intent intent = getIntent();
 				int pos = intent.getIntExtra("position", 0);
 				int uid = intent.getIntExtra("userid", -1);
 				String review =et_review.getText().toString();
-				if(db.saveReview(uid,pos,review) >0 )
+				float rate = rating.getRating();
+				if(db.saveReview(uid,pos,review,rate,review_given) >0 )
 					{
 					 
 					
 					   Toast.makeText(getApplicationContext(), "Review Saved!", Toast.LENGTH_SHORT).show();
-					   Intent intent1 = new Intent(EachBook.this,My_reviews.class);
-					   intent1.putExtra("userid",uid);
-					   startActivity(intent1);
+					   review_given=false;
 					}
-				
+				else
+				{
+					Toast.makeText(getApplicationContext(), "Review given already!", Toast.LENGTH_SHORT).show();
+				}
 				
 			}
 		});

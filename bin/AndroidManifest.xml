@@ -6,14 +6,15 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="10" />
+        android:targetSdkVersion="19" />
 
     <application
         android:allowBackup="true"
-        android:logo="@drawable/ic_launcher"
+        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:debuggable="true">
+        android:logo="@drawable/ic_launcher"
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.bookd.MainActivity"
             android:label="@string/app_name" >
@@ -38,6 +39,10 @@
         <activity
             android:name="com.example.bookd.My_reviews"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.bookd.All_reviews"
+            android:label="@string/title_activity_all_reviews" >
         </activity>
     </application>
 

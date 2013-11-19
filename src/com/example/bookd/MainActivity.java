@@ -37,17 +37,19 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				 String user = username.getText().toString();
 			        String pass = password.getText().toString();
-			        if(user !="" && pass != "")
+			        if(user.trim().matches("") || pass.trim().matches(""))
+			        {
+			        	
+			        	Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_SHORT).show();
+			        }
+			        else
 			        {
 			        	if(db.insertToLogin(user,pass))
 			        	{
 			        	Toast.makeText(getApplicationContext(), "Successful signup!!", Toast.LENGTH_SHORT).show();
 			        	}
 			        }
-			        else
-			        {
-			        	Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_SHORT).show();
-			        }
+			        
 			}
 		});
         

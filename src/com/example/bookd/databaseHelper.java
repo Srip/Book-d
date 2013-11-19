@@ -35,10 +35,17 @@ public class databaseHelper extends SQLiteOpenHelper {
 		private static final String BOOK_AUTHOR = "bookauthor";
 		private static final String BOOK_DESCR = "bookdescription";
 		
+		
 		private static final String REVIEW_ID ="review_id";
 		private static final String USER_ID_FOR = "user_id";
 		private static final String BOOK_ID_FOR = "book_id";
 		private static final String REVIEWS = "reviews";
+		private static final String BOOK_RATING = "rating";
+		public static String []names= {"Harry Potter and the Socerer's stone","The Alchemist","The Da Vinci Code",
+				"Pride and Prejudice","How to kill a mocking bird","Lif of Pi","Water for elephants",
+				"Kite Runner","Harry Potter and the goblet of fire","Stephen Hawking-A brief history of time",
+				"Android application development for dummies","The hobbit","Angels and demons","Memoirs of Geisha",
+				"The adventures of Huckleberry finn","Wuthering Heights"};
 		
 		
 
@@ -64,7 +71,8 @@ public class databaseHelper extends SQLiteOpenHelper {
 		db.execSQL(CREATE_BOOKS_TABLE);
 		
 		String CREATE_REVIEW_TABLE ="CREATE TABLE "+TABLE_REVIEW + "("+REVIEW_ID+" INTEGER PRIMARY KEY autoincrement,"+USER_ID_FOR
-				+" INTEGER, "+BOOK_ID_FOR+" INTEGER, "+REVIEWS+" TEXT, FOREIGN KEY ("+USER_ID_FOR
+				+" INTEGER, "+BOOK_ID_FOR+" INTEGER, "+REVIEWS+" TEXT ,"+BOOK_RATING+
+				" REAL ,FOREIGN KEY ("+USER_ID_FOR
 				+") REFERENCES "+TABLE_LOGIN+"("+LOGIN_ID+"), FOREIGN KEY ("+BOOK_ID_FOR
 				+") REFERENCES "+TABLE_BOOKS+"("+BOOK_ID+") );";		
 				db.execSQL(CREATE_REVIEW_TABLE);
@@ -92,11 +100,14 @@ public class databaseHelper extends SQLiteOpenHelper {
 		values.put(USERNAME, u);
 		values.put(PASSWORD, p);
 		SQLiteDatabase db = this.getWritableDatabase();
-		long row_id = db.insert(TABLE_LOGIN, null, values);
-		if(row_id > 0)
-		return true;
-		else
-			return false;
+		
+			long row_id = db.insert(TABLE_LOGIN, null, values);
+			if(row_id > 0)
+				return true;
+			else
+				return false;
+		
+		
 	}
 	
 	public int loginAuthenticated(String u,String p) 
@@ -117,50 +128,38 @@ public class databaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		String query = "SELECT * FROM "+TABLE_BOOKS+" WHERE "+BOOK_ID+ "= "+pos+" ;";
 		Cursor c = db.rawQuery(query, null);
-		
 		return c;
 		
 	}
 	
-	public int saveReview(int uid,int pos_book,String review)
+	public int saveReview(int uid,int pos_book,String review,float rating,boolean review_given)
 	{
+		if(review_given)
+		{
 		SQLiteDatabase db = this.getWritableDatabase();
-		//String query = "insert into "+TABLE_REVIEW+ "(" +USER_ID_FOR+" , "+BOOK_ID_FOR+" , "+REVIEWS
-				//+" ) values ("+uid+" , "+pos_book+" , \""+review+"\");";
 		ContentValues values = new ContentValues();
 		values.put("user_id",uid);
 		values.put("book_id", pos_book);
 		values.put("reviews",review);
+		values.put("rating", rating);
 		long row_id = db.insert(TABLE_REVIEW, null, values);
 		return (int)row_id;
+		}
+		else 
+			return -1;
 	}
 	
-	public String[] getBookReview(int uid)
+	public Cursor getBookReview(int uid)
 	{
 		int i =0;
 		SQLiteDatabase db = this.getReadableDatabase();
-		Log.v("book review","called");
 		String query = "SELECT * from "+TABLE_REVIEW+" where "+USER_ID_FOR+" = "+uid+" ;";
 		Cursor c = db.rawQuery(query, null);
 		if(c.getCount()==0)
 			return null;
 		
-		ArrayList<String> review =new ArrayList<String>();
-		c.moveToFirst();
 		
-		do
-		{
-			
-			String q = "SELECT * FROM "+TABLE_BOOKS+" WHERE "+BOOK_ID+" = "+c.getInt(2)+";";
-			Cursor bn = db.rawQuery(q, null);
-			bn.moveToFirst();
-		  review.add(bn.getString(1)+"::\n"+c.getString(3));
-		 
-		}while(c.moveToNext());
-		
-		String[] review_array = new String[review.size()];
-		review.toArray(review_array);
-		return review_array;
+		return c;
 	}
 	
 	public void insertIntoBooks(SQLiteDatabase db)
@@ -168,11 +167,7 @@ public class databaseHelper extends SQLiteOpenHelper {
 		//SQLiteDatabase db = getWritableDatabase();
 		Log.v("insert books","called");
 		
-		String []names= {"Harry Potter and the Socerer's stone","The Alchemist","The Da Vinci Code",
-				"Pride and Prejudice","How to kill a mocking bird","Lif of Pi","Water for elephants",
-				"Kite Runner","Harry Potter and the goblet of fire","Stephen Hawking-A brief history of time",
-				"Android application development for dummies","The hobbit","Angels and demons","Memoirs of Geisha",
-				"The adventures of Huckleberry finn","Wuthering Heights"};
+		
 		
 		
 		String []author ={"J K Rowling","Paulo Coelho","Dan Brown","Jane Austin","Harper Lee","Yann Martel","Sara Gruen",
@@ -232,11 +227,24 @@ public class databaseHelper extends SQLiteOpenHelper {
 			values.put("bookauthor", author[i]);
 			values.put("bookdescription", description[i]);
 			db.insert(TABLE_BOOKS, null, values);
-			Log.v("for","loop");
+			
 		}
 		
 	}
 	
-
+	public Cursor getAllBookReview()
+	{
+		int i =0;
+		SQLiteDatabase db = this.getReadableDatabase();
+		String query = "SELECT * from "+TABLE_REVIEW+" ;";
+		Cursor c = db.rawQuery(query, null);
+		if(c.getCount()==0)
+			return null;
+		
+		
+		return c;
+	}
+	
+	
 
 }

@@ -28,13 +28,13 @@ public class Tab_try extends TabActivity
 
                     TabSpec tab1 = tabHost.newTabSpec("Bookstab");
                     TabSpec tab2 = tabHost.newTabSpec("My reviews");
+                    TabSpec tab3 = tabHost.newTabSpec("All reviews");
 
                    // Set the Tab name and Activity
                    // that will be opened when particular Tab will be selected
                     tab1.setIndicator("Books");
                     Intent book_intent = new Intent(this,BookList.class);
                     book_intent.putExtra("userid", uid);
-                    
                     tab1.setContent(book_intent);
                     
                     
@@ -42,13 +42,18 @@ public class Tab_try extends TabActivity
                     review_intent.putExtra("userid", uid);
                     tab2.setIndicator("My Reviews");
                     tab2.setContent(review_intent);
+                    
+                    Intent all_review_intent = new Intent(this,All_reviews.class);
+                    review_intent.putExtra("userid", uid);
+                    tab3.setIndicator("All Reviews");
+                    tab3.setContent(all_review_intent);
 
                    
                     
                     /** Add the tabs  to the TabHost to display. */
                     tabHost.addTab(tab1);
                     tabHost.addTab(tab2);
-                    
+                    tabHost.addTab(tab3);
                    
 
             }
